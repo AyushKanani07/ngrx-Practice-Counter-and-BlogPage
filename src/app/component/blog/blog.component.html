@@ -1,0 +1,33 @@
+<div class="pageTitle">
+    <h1>Technology Blogs</h1>
+
+    <div *ngIf="!bloginfo.Errormesage">
+    <button (click)="addBlog()" mat-raised-button color="primary">Add Blog</button>
+    
+    <mat-card *ngIf="!bloginfo.blogList.length">
+        <h1>No Blog found</h1>
+    </mat-card>
+
+    <mat-card *ngFor="let item of bloginfo.blogList">
+        <mat-card-header>
+            <h1>{{item.title}}</h1>
+            <div style="text-align: right; width: 100%;">
+                <button (click)="editBlog(item.id)" mat-raised-button color="primary"><mat-icon fontIcon="edit"></mat-icon></button>
+                <button (click)="removeBlog(item.id)" mat-raised-button color="accent"><mat-icon fontIcon="delete"></mat-icon></button>
+            </div>
+        </mat-card-header>
+        <mat-card-content>
+            <p>{{item.description}}</p>
+        </mat-card-content>
+    </mat-card>
+</div>
+</div>
+
+<mat-card *ngIf="bloginfo.Errormesage">
+    <mat-card-header>
+        <h1>Error Occur</h1>
+    </mat-card-header>
+    <mat-card-content>
+        <p style="color: red;">{{bloginfo.Errormesage}}</p>
+    </mat-card-content>
+</mat-card>
